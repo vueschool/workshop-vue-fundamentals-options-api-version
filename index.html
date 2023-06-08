@@ -7,77 +7,20 @@
     <script src="https://unpkg.com/vue@3"></script>
 
     <div id="app">
-      <div @keyup.esc="resetVotes" tabindex="0">
-        <h1>Election</h1>
-
-        <h3>Add candidate</h3>
-
-        <form @submit.prevent="addCandidate">
-          <label
-            >Name <br />
-            <input type="text" v-model="form.name"
-          /></label>
-          <label
-            >Initial votes <br />
-            <input type="number" v-model="form.votes"
-          /></label>
-          <button>Add</button>
-        </form>
-
-        <h3>Our mayor is <em>{{ mayor}}</em></h3>
-        <h3>Total votes: <em>{{totalVotes}}</em></h3>
-
-        <ul>
-          <li v-for="candidate in orderedCandidates">
-            <strong>{{ candidate.name }}</strong> {{ candidate.votes}}
-            <button @click="vote(candidate)">Vote</button>
-          </li>
-        </ul>
-      </div>
+      <label for="email">Email</label>
+      <input type="email" type="email" v-model="email" />
     </div>
 
     <script>
       Vue.createApp({
         data() {
           return {
-            form: {
-              name: "",
-              votes: 0,
-            },
-            candidates: [
-              { name: "Violet", votes: 0 },
-              { name: "Dash", votes: 0 },
-              { name: "Jack Jack", votes: 0 },
-              { name: "Elastigirl", votes: 0 },
-              { name: "Mr. Incredible", votes: 0 },
-            ],
+            email: "",
           };
         },
         computed: {
-          orderedCandidates() {
-            return [...this.candidates].sort((a, b) => b.votes - a.votes);
-          },
-          mayor() {
-            return this.orderedCandidates[0].name;
-          },
-          totalVotes() {
-            return this.candidates.reduce(
-              (count, candidate) => count + candidate.votes,
-              0
-            );
-          },
-        },
-        methods: {
-          vote(candidate) {
-            candidate.votes++;
-          },
-          addCandidate() {
-            this.candidates.push({ ...this.form });
-            this.form.name = "";
-            this.form.votes = 0;
-          },
-          resetVotes() {
-            this.candidates.forEach((c) => (c.votes = 0));
+          emailIsValid() {
+            return /^\S+@\S+\.\S+$/.test(this.email);
           },
         },
       }).mount("#app");

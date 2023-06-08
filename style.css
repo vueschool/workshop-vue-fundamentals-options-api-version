@@ -52,3 +52,7 @@ em {
   color: #0567ff;
   font-style: normal;
 }
+
+.is-invalid {
+  color: red;
+}
