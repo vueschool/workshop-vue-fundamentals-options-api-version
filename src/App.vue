@@ -22,7 +22,7 @@ export default {
       :key="planet.name"
       :name="planet.name"
       :visits="planet.visits"
-      @visited="planet.visits++"
+      @visited="planet.visits = $event"
     ></AppPlanet>
   </ul>
 </template>

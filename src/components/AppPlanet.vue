@@ -16,8 +16,17 @@ export default {
   <li>
     <span>
       <strong>Planet:</strong>
-      {{ name }} Visted {{ visits }} time(s)
-      <button @click="$emit('visited')">Visit</button>
+      {{ name }} Visted
+      <input
+        type="number"
+        :value="visits"
+        :style="{ display: 'inline', width: '30px' }"
+        @input="$emit('visited', $event.target.value)"
+        min="0"
+        max="9"
+      />
+      time(s)
+      <button @click="$emit('visited', visits + 1)">Visit</button>
     </span>
     <span v-if="showIcon">🚀</span>
   </li>
