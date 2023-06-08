@@ -8,6 +8,11 @@
       <label>Enter your name: </label>
       <br />
       <input type="text" v-model="name" id="name" />
+      <br />
+      <label
+        ><input type="checkbox" v-model="exciting" />Exciting
+        {{exciting}}</label
+      >
     </div>
 
     <script>
@@ -15,6 +20,7 @@
         data() {
           return {
             name: "",
+            exciting: false,
           };
         },
       }).mount("#app");
