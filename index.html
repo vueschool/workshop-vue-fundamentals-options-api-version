@@ -3,28 +3,12 @@
   <body>
     <script src="https://unpkg.com/vue@3"></script>
 
-    <div id="app">
-      <div v-for="user in users">
-        <h2>{{ user.name }}</h2>
-        <ul>
-          <li v-for="hobby in user.hobbies" :key="hobby">{{ hobby }}</li>
-        </ul>
-      </div>
-    </div>
+    <div id="app"></div>
 
     <script>
       Vue.createApp({
         data() {
-          return {
-            users: [
-              {
-                name: "Alex",
-                hobbies: ["coding", "movies", "techno party", "board games"],
-              },
-              { name: "Boudy", hobbies: ["golf", "food", "cars"] },
-              { name: "Daniel", hobbies: ["coding", "woodworking", "movies"] },
-            ],
-          };
+          return {};
         },
       }).mount("#app");
     </script>
