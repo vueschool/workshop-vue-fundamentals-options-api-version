@@ -22,6 +22,7 @@ export default {
       :key="planet.name"
       :name="planet.name"
       :visits="planet.visits"
+      @visited="planet.visits++"
     ></AppPlanet>
   </ul>
 </template>

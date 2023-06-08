@@ -1,5 +1,6 @@
 <script>
 export default {
+  emits: ["visited"],
   props: {
     name: { type: String, required: true },
     visits: { type: Number, required: true },
@@ -16,6 +17,7 @@ export default {
     <span>
       <strong>Planet:</strong>
       {{ name }} Visted {{ visits }} time(s)
+      <button @click="$emit('visited')">Visit</button>
     </span>
     <span v-if="showIcon">🚀</span>
   </li>
