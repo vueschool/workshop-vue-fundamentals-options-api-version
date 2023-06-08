@@ -1,11 +1,10 @@
 <script>
-export default{
-  
-}
+import CounterButton from "./components/CounterButton.vue";
+export default {
+  components: { CounterButton },
+};
 </script>
 
 <template>
-
-<h1>Hello Vue</h1>
-
+  <CounterButton></CounterButton>
 </template>
