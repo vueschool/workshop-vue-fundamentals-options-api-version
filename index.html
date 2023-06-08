@@ -25,6 +25,7 @@
         </form>
 
         <h3>Our mayor is {{ mayor}}</h3>
+        <h3>Total votes: {{totalVotes}}</h3>
 
         <div v-for="candidate in orderedCandidates" style="padding: 10px">
           <strong>{{ candidate.name }}</strong> {{ candidate.votes}}
@@ -56,6 +57,12 @@
           },
           mayor() {
             return this.orderedCandidates[0].name;
+          },
+          totalVotes() {
+            return this.candidates.reduce(
+              (count, candidate) => count + candidate.votes,
+              0
+            );
           },
         },
         methods: {
