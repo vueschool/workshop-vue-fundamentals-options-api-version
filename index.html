@@ -5,16 +5,18 @@
 
     <div id="app">
       <input type="text" v-model="animal" />
+      <input type="color" v-model="color" />
       <br />
       <p v-if="animal === 'dog'">Dog goes woof!</p>
       <p v-else-if="animal === 'cat'">Cat goes meow!</p>
-      <p v-else>What does the {{animal}} say?</p>
+      <p v-else :style="`color:${color};`">What does the {{animal}} say?</p>
     </div>
 
     <script>
       Vue.createApp({
         data() {
           return {
+            color: "black",
             animal: "fox",
           };
         },
