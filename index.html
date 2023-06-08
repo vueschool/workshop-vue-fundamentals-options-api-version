@@ -24,7 +24,9 @@
           <button>Add</button>
         </form>
 
-        <div v-for="candidate in candidates" style="padding: 10px">
+        <h3>Our mayor is {{ mayor}}</h3>
+
+        <div v-for="candidate in orderedCandidates" style="padding: 10px">
           <strong>{{ candidate.name }}</strong> {{ candidate.votes}}
           <button @click="vote(candidate)">Vote</button>
         </div>
@@ -47,6 +49,14 @@
               { name: "Mr. Incredible", votes: 0 },
             ],
           };
+        },
+        computed: {
+          orderedCandidates() {
+            return [...this.candidates].sort((a, b) => b.votes - a.votes);
+          },
+          mayor() {
+            return this.orderedCandidates[0].name;
+          },
         },
         methods: {
           vote(candidate) {
