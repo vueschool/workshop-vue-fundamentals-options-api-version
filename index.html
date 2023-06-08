@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
   <body>
     <script src="https://unpkg.com/vue@3"></script>
 
@@ -14,22 +17,21 @@
             >Name <br />
             <input type="text" v-model="form.name"
           /></label>
-          <br /><br />
           <label
             >Initial votes <br />
             <input type="number" v-model="form.votes"
           /></label>
-          <br />
-          <br />
           <button>Add</button>
         </form>
 
-        <h3>Our mayor is {{ mayor}}</h3>
+        <h3>Our mayor is <em>{{ mayor}}</em></h3>
 
-        <div v-for="candidate in orderedCandidates" style="padding: 10px">
-          <strong>{{ candidate.name }}</strong> {{ candidate.votes}}
-          <button @click="vote(candidate)">Vote</button>
-        </div>
+        <ul>
+          <li v-for="candidate in orderedCandidates">
+            <strong>{{ candidate.name }}</strong> {{ candidate.votes}}
+            <button @click="vote(candidate)">Vote</button>
+          </li>
+        </ul>
       </div>
     </div>
 
