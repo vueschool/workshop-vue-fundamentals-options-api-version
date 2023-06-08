@@ -4,28 +4,30 @@
     <script src="https://unpkg.com/vue@3"></script>
 
     <div id="app">
-      <h1>Election</h1>
+      <div @keyup.esc="resetVotes" tabindex="0">
+        <h1>Election</h1>
 
-      <h3>Add candidate</h3>
+        <h3>Add candidate</h3>
 
-      <form @submit.prevent="addCandidate">
-        <label
-          >Name <br />
-          <input type="text" v-model="form.name"
-        /></label>
-        <br /><br />
-        <label
-          >Initial votes <br />
-          <input type="number" v-model="form.votes"
-        /></label>
-        <br />
-        <br />
-        <button>Add</button>
-      </form>
+        <form @submit.prevent="addCandidate">
+          <label
+            >Name <br />
+            <input type="text" v-model="form.name"
+          /></label>
+          <br /><br />
+          <label
+            >Initial votes <br />
+            <input type="number" v-model="form.votes"
+          /></label>
+          <br />
+          <br />
+          <button>Add</button>
+        </form>
 
-      <div v-for="candidate in candidates" style="padding: 10px">
-        <strong>{{ candidate.name }}</strong> {{ candidate.votes}}
-        <button @click="vote(candidate)">Vote</button>
+        <div v-for="candidate in candidates" style="padding: 10px">
+          <strong>{{ candidate.name }}</strong> {{ candidate.votes}}
+          <button @click="vote(candidate)">Vote</button>
+        </div>
       </div>
     </div>
 
@@ -54,6 +56,9 @@
             this.candidates.push({ ...this.form });
             this.form.name = "";
             this.form.votes = 0;
+          },
+          resetVotes() {
+            this.candidates.forEach((c) => (c.votes = 0));
           },
         },
       }).mount("#app");
